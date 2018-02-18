@@ -3,6 +3,8 @@ import { Http, RequestOptions, Headers, Response } from '@angular/http';
 
 import Pedido from './shared/pedido.model';
 import { Observable } from 'rxjs/Observable';
+import { URL_API } from './app.url'
+
 
 @Injectable()
 export class OrdemCompraService {
@@ -16,7 +18,7 @@ export class OrdemCompraService {
         headers.append('Content-type','application/json');
 
         return this.http.post(
-            'http://localhost:3000/pedidos',
+            `${URL_API}/pedidos`,
             JSON.stringify(pedido),
             new RequestOptions({headers: headers})
         )
