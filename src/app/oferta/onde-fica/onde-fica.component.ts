@@ -10,14 +10,14 @@ import { OfertasService } from '../../ofertas.service';
 })
 export class OndeFicaComponent implements OnInit {
 
-  public ondeFica: string = '';
+  public ondeFica: any;
 
   constructor(private rote: ActivatedRoute, private ofertasService: OfertasService) { }
 
   ngOnInit() {
     this.rote.parent.params.subscribe((parametros: Params) => {
       this.ofertasService.getOndeFicaOfertaPorID(parametros.id)
-        .then((ondeFica: string)=>this.ondeFica=ondeFica)
+        .then((ondeFica: any)=>this.ondeFica=ondeFica)
     });
   }
 

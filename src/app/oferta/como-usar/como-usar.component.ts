@@ -10,14 +10,14 @@ import { OfertasService } from '../../ofertas.service';
 })
 export class ComoUsarComponent implements OnInit {
 
-  public comoUsar: string = '';
+  public comoUsar: any;
 
   constructor(private rote: ActivatedRoute, private ofertasService: OfertasService) { }
 
   ngOnInit() {
     this.rote.parent.params.subscribe((parametros: Params) => {
       this.ofertasService.getComoUsarOfertaPorID(parametros.id)
-        .then((comoUsar: string)=>this.comoUsar=comoUsar)
+        .then((comoUsar: any)=>this.comoUsar=comoUsar)
     });
   }
 
