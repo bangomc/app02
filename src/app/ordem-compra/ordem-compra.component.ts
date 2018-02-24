@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { OrdemCompraService } from '../ordem-compra.service';
+import { CarrinhoService } from '../carrinho.service';
 import Pedido from '../shared/pedido.model';
 
 
@@ -19,10 +20,10 @@ export class OrdemCompraComponent implements OnInit {
   idPedido: number;
 
 
-  constructor(private ordemCompraService: OrdemCompraService) { }
+  constructor(private ordemCompraService: OrdemCompraService, private carrinhoService: CarrinhoService) { }
 
   ngOnInit() {
-    
+    console.log('Ordem compra - Carrinho ',this.carrinhoService.exibirItens());
   }
 
   confirmarCompra(): void {
@@ -30,7 +31,8 @@ export class OrdemCompraComponent implements OnInit {
       this.formulario.value.endereco,
       this.formulario.value.numero,
       this.formulario.value.complemento,
-      this.formulario.value.formaPagamento
+      this.formulario.value.formaPagamento,
+      this.carrinhoService.exibirItens()
     );
 
     this.ordemCompraService.efetivarCompra(pedido)

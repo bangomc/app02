@@ -1,3 +1,5 @@
+import { ItemCarrinho } from "./item-carrinho.model";
+
 export default class Pedido {
      
   constructor(
@@ -5,5 +7,6 @@ export default class Pedido {
         public numero: string,
         public complemento: string,
         public formaPagamento: string,
+        public itens: ItemCarrinho[]
     ){}
 }
